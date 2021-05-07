@@ -1,9 +1,11 @@
-<app-header></app-header>
+<app-header (category)='onCategoryChange($event)'></app-header>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <app-recipes></app-recipes>
-            <app-shopping-list></app-shopping-list>
+        <div class="col-md-12" >
+            <app-recipes *ngIf="categorySelected === 'recipes'; else shop"></app-recipes>
+            <ng-template #shop>
+                <app-shopping-list></app-shopping-list>
+            </ng-template>
         </div>
     </div>
 </div>
